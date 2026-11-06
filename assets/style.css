@@ -5,10 +5,10 @@
 /* Academic homepage: streamlined navigation and professional portrait */
 .nav-shell{justify-content:center;min-height:70px}
 .hero{grid-template-columns:minmax(0,1.4fr) minmax(290px,.82fr);gap:52px;align-items:start;padding-top:70px;padding-bottom:53px}
-.hero h1{font-size:clamp(45px,5.2vw,70px);margin-bottom:25px}
+.hero h1{font-size:clamp(36px,3.8vw,50px);margin-bottom:25px}
 .hero-lead{font-size:16px;line-height:1.85;margin-bottom:19px}
 .hero-description{font-size:15px;line-height:1.85;max-width:660px;margin-bottom:27px}
 .hero-photo{margin:2px 0 0;align-self:start;overflow:hidden;border-radius:12px;background:#dfe7e3;box-shadow:0 14px 40px rgba(17,46,43,.12)}
 .hero-photo img{display:block;width:100%;height:auto;aspect-ratio:420/562;object-fit:cover}
-@media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr) minmax(250px,.67fr);gap:32px}.hero-photo{align-self:start}.hero h1{font-size:48px}.hero-lead{font-size:15px}}
-@media(max-width:690px){.nav-shell{min-height:68px;align-items:center;flex-direction:row;padding-top:10px;padding-bottom:10px}.main-nav{justify-content:center;gap:22px}.hero{grid-template-columns:1fr;gap:28px;padding-top:42px;padding-bottom:45px}.hero h1{font-size:46px}.hero-photo{max-width:390px;grid-row:2;margin:0 auto}.hero-lead{font-size:16px}}
+@media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr) minmax(250px,.67fr);gap:32px}.hero-photo{align-self:start}.hero h1{font-size:42px}.hero-lead{font-size:15px}}
+@media(max-width:690px){.nav-shell{min-height:68px;align-items:center;flex-direction:row;padding-top:10px;padding-bottom:10px}.main-nav{justify-content:center;gap:22px}.hero{grid-template-columns:1fr;gap:28px;padding-top:42px;padding-bottom:45px}.hero h1{font-size:38px}.hero-photo{max-width:390px;grid-row:2;margin:0 auto}.hero-lead{font-size:16px}}
