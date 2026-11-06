@@ -1,0 +1,118 @@
+%-------------------------------------
+% Resume Style (XeLaTeX)
+% Based on user's previous style; revised for full-width section headers
+%-------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{myresume}[2026/11/06 CV formatting]
+
+% ==== Page Geometry ====
+\RequirePackage[top=1.5cm, bottom=2.6cm, left=2.3cm, right=2.3cm, marginparwidth=1.75cm]{geometry}
+
+% ==== Core Packages ====
+\RequirePackage{xcolor}
+\RequirePackage{setspace}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\setlist[enumerate]{itemsep=0.8em, topsep=0pt} % adjust itemsep as needed
+
+\RequirePackage{tabularx}
+\RequirePackage{ragged2e}
+\RequirePackage{array}
+\RequirePackage{fontspec}
+
+% ==== Fonts ====
+% Standard TeX Live / Overleaf fonts; no external font files needed.
+\setmainfont{TeX Gyre Pagella}
+\newfontfamily\Calluna{TeX Gyre Pagella}
+\newfontfamily\Courier{TeX Gyre Cursor}
+\newfontfamily\CronosLt{TeX Gyre Heros}
+
+% ==== Emphasis style (keep user's intent) ====
+\renewcommand{\emph}[1]{\textbf{\fontsize{11pt}{11pt}\selectfont #1}}
+
+% ==== Section formatting ====
+\setcounter{secnumdepth}{0}
+\titleformat{\section}{
+  \setstretch{1.0}%
+  \CronosLt\scshape\raggedright
+  \fontsize{18pt}{14.5pt}\selectfont
+}{}{0em}{}
+\titlespacing*{\section}{0pt}{8pt}{6pt}
+
+% ==== SECTION BLOCK (full-width header, no columns) ====
+% You call it like: \sectionBlock{\section{Teaching Experience}}{<content>}
+% We simply typeset #1 (your \section{...}) then place #2 below it.
+\newcommand{\sectionBlock}[2]{%
+  #1%
+  \par\vspace{-0.1em}%
+  #2%
+  \par\vspace{10pt}%
+}
+
+% ==== List Helpers (compact, no negative vspaces) ====
+\setlist{topsep=3pt, itemsep=3pt, parsep=0pt, partopsep=0pt}
+
+\newcommand{\pubListStart}{\begin{enumerate}[leftmargin=1.2em]}
+\newcommand{\pubListEnd}{\end{enumerate}}
+
+\newcommand{\awardListStart}{\begin{itemize}[leftmargin=1.2em]}
+\newcommand{\awardListEnd}{\end{itemize}}
+
+\newcommand{\skillListStart}{\begin{itemize}[leftmargin=1.2em, label={}, itemsep=2pt]}
+\newcommand{\skillListEnd}{\end{itemize}}
+
+\newcommand{\itemListStart}{\begin{itemize}[leftmargin=1.4em]}
+\newcommand{\itemListEnd}{\end{itemize}}
+
+\newcommand{\myItem}[1]{\item #1}
+
+% ==== Headings (responsive to \textwidth; no hard-coded 13.74cm) ====
+
+% Education heading:
+% \eduHeading{Institution}{Location}{Degree/Title}{Dates}
+\newcommand{\eduHeading}[4]{%
+  \renewcommand{\arraystretch}{1.2}%
+  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}%
+    \emph{#1} & #2 \\
+    \textit{#3} & #4 \\
+  \end{tabular*}\par
+}
+
+
+% Experience/role heading:
+% \internHeading{Role/Unit}{Organization}{Dates}
+\newcommand{\internHeading}[3]{%
+  \renewcommand{\arraystretch}{1.2}%
+  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}%
+    \emph{#1} \textbar\ #2 & #3 \\
+  \end{tabular*}\par
+}
+
+% Project heading:
+% \projHeading{Project Title}{Sponsor/Context}{Dates}
+\newcommand{\projHeading}[3]{%
+  \renewcommand{\arraystretch}{1.2}%
+  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}%
+    \textbf{#1} & \\
+  \end{tabular*}%
+  \textit{#2}\hfill #3\par
+}
+
+
+% ----- Conference heading: venue/date line, then title(s) with clean spacing
+\newcommand{\confHeading}[3]{
+  \noindent\textbf{#1} \hfill #3 \\[0.2em]
+  \begingroup
+    \setlength{\parindent}{0pt}%
+    \hangindent=1.2em\hangafter=1
+    #2\par
+  \endgroup
+  \vspace{0.6em}
+}
+
+
+% ==== Misc tweaks ====
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\RaggedRight

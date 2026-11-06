@@ -1,0 +1,53 @@
+name: Publish academic website
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+
+      - name: Compile current CV PDF with XeLaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: cv-src
+          latexmk_use_xelatex: true
+
+      - name: Assemble static website
+        run: |
+          mkdir -p _site
+          cp index.html research.html teaching.html cv.html _site/
+          cp -R assets _site/
+          cp cv-src/main.pdf _site/Liang-Xu-CV.pdf
+          touch _site/.nojekyll
+          test -s _site/Liang-Xu-CV.pdf
+          test -s _site/index.html
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
