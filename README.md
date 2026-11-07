@@ -6,4 +6,6 @@ Site source: HTML/CSS, built and deployed through GitHub Pages Actions. The CV P
 
 Pages: Home, Research, Teaching, CV.
 
+Live homepage (GitHub Pages user site): https://xuliang-leon.github.io/
+
 To publish: Settings → Pages → Build and deployment → Source: GitHub Actions.
