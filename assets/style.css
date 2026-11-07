@@ -14,8 +14,13 @@
 @media(max-width:690px){.nav-shell{min-height:68px;align-items:center;flex-direction:row;padding-top:10px;padding-bottom:10px}.main-nav{justify-content:center;gap:22px}.hero{grid-template-columns:1fr;gap:28px;padding-top:42px;padding-bottom:45px}.hero h1{font-size:38px}.hero-photo{max-width:390px;grid-row:2;margin:0 auto}.hero-lead{font-size:16px}}
 
 /* Professional portrait: more prominent size and natural image proportions */
-.hero-photo{width:100%;max-width:370px;justify-self:end;margin:4px 0 0;border-radius:10px}
-.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+.hero-photo{width:100%;max-width:370px;justify-self:end;margin:4px 0 0;overflow:visible;background:none;box-shadow:none}
+.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:10px;box-shadow:0 14px 40px rgba(17,46,43,.12)}
+.social-links{display:flex;justify-content:center;gap:12px;margin-top:20px}
+.social-link{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #c7d4cf;border-radius:50%;background:#fff;color:var(--navy);transition:color .18s ease,border-color .18s ease,transform .18s ease}
+.social-link:hover{color:var(--teal);border-color:var(--teal);transform:translateY(-2px)}
+.social-link:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.social-link svg{display:block;width:20px;height:20px}
 @media(max-width:900px){.hero-photo{max-width:335px}}
 @media(max-width:690px){.hero-photo{max-width:340px;justify-self:center;margin:0 auto}}
 
